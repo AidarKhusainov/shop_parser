@@ -3,8 +3,7 @@ package ru.aidarkhusainov.parser.model.ali;
 public class Result {
     private String minPrice;
     private String maxPrice;
-    private String currency;
-    private String detailUrl;
+    private String productDetailUrl;
     private String productId;
     private String sellerId;
     private String productTitle;
@@ -18,8 +17,7 @@ public class Result {
         return "Result{" +
                 "minPrice='" + minPrice + '\'' +
                 ", maxPrice='" + maxPrice + '\'' +
-                ", currency='" + currency + '\'' +
-                ", detailUrl='" + detailUrl + '\'' +
+                ", productDetailUrl='" + productDetailUrl + '\'' +
                 ", productId='" + productId + '\'' +
                 ", sellerId='" + sellerId + '\'' +
                 ", productTitle='" + productTitle + '\'' +
@@ -46,20 +44,12 @@ public class Result {
         this.maxPrice = maxPrice;
     }
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public String getDetailUrl() {
-        return detailUrl;
+    public String getProductDetailUrl() {
+        return productDetailUrl;
     }
 
     public void setDetailUrl(String detailUrl) {
-        this.detailUrl = detailUrl;
+        this.productDetailUrl = detailUrl;
     }
 
     public String getProductId() {

@@ -7,10 +7,13 @@ import ru.aidarkhusainov.export.model.goods.AliTemplate;
 import ru.aidarkhusainov.httpclient.HttpClient;
 import ru.aidarkhusainov.parser.Json;
 import ru.aidarkhusainov.parser.model.ali.AliModel;
+import ru.aidarkhusainov.parser.model.ali.Result;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 class CSVFileTest {
 
@@ -24,16 +27,36 @@ class CSVFileTest {
 
     @Test
     void export() throws IOException {
-        CSVFile csvFile = new CSVFile();
         AliTemplate aliTemplate = new AliTemplate();
         HttpClient httpClient = new HttpClient();
         Json json = new Json(httpClient.doGET());
         json.DOFormatToJson();
-        AliModel aliModel = json.parseToObj();
+        Object aliModel = json.parseToObj(AliModel.class);
 
-        csvFile.export(new File(
-                "src/main/resources/test.csv"),
+        List<List<String>> aliRecords = new ArrayList<>();
+
+        for (Result r : ((AliModel) aliModel).getResults()) {
+            aliRecords.add(Arrays.asList(
+                    r.getProductDetailUrl(),
+                    r.getDiscount(),
+                    r.getMaxPrice(),
+                    r.getMinPrice(),
+                    r.getOriginalPrice(),
+                    r.getProductAvgStar(),
+                    r.getProductId(),
+                    r.getProductImage(),
+                    r.getProductTitle(),
+                    r.getSellerId()
+            ));
+
+        }
+
+        CSVFile csvFile = new CSVFile(
+                new File("./sample.csv"),
                 aliTemplate.getFields(),
-                aliModel.getResults());
+                aliRecords,
+                "###");
+
+        csvFile.export();
     }
 }

@@ -44,6 +44,7 @@ class JsonTest {
         HttpClient httpClient = new HttpClient();
         Json json = new Json(httpClient.doGET());
         json.DOFormatToJson();
-        AliModel aliModel = json.parseToObj();
+        Object aliModel = json.parseToObj(AliModel.class);
+        System.out.println(aliModel);
     }
 }

@@ -12,14 +12,13 @@ public class Json {
         this.json = json;
     }
 
-    public AliModel parseToObj() {
+    public <T> Object parseToObj(Class<T> model) {
 
         System.out.println(json);
 
         Gson gson = new GsonBuilder().create();
-        AliModel aliModel = gson.fromJson(json, AliModel.class);
 
-        return aliModel;
+        return gson.fromJson(json, model);
     }
 
     public void DOFormatToJson(){

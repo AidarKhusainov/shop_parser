@@ -6,8 +6,7 @@ import java.util.List;
 public class AliTemplate {
     private String minPrice;
     private String maxPrice;
-    private String currency;
-    private String detailUrl;
+    private String productDetailUrl;
     private String productId;
     private String sellerId;
     private String productTitle;
@@ -16,19 +15,15 @@ public class AliTemplate {
     private String discount;
     private String productAvgStar;
 
+
     public AliTemplate() {
     }
 
-    public AliTemplate(String minPrice, String maxPrice,
-                       String currency, String detailUrl,
-                       String productId, String sellerId,
-                       String productTitle, String productImage,
-                       String originalPrice, String discount,
-                       String productAvgStar) {
+    public AliTemplate(String minPrice, String maxPrice, String productDetailUrl, String productId, String sellerId,
+                       String productTitle, String productImage, String originalPrice, String discount, String productAvgStar) {
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
-        this.currency = currency;
-        this.detailUrl = detailUrl;
+        this.productDetailUrl = productDetailUrl;
         this.productId = productId;
         this.sellerId = sellerId;
         this.productTitle = productTitle;
@@ -42,8 +37,7 @@ public class AliTemplate {
         return Arrays.asList(
                 "minPrice",
                 "maxPrice",
-                "currency",
-                "detailUrl",
+                "productDetailUrl",
                 "productId",
                 "sellerId",
                 "productTitle",
